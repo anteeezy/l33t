@@ -1,0 +1,3 @@
+# l33tlang - No external dependencies required!
+# This is a pure Python implementation
+# Python 3.7+ is recommended 

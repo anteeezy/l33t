@@ -1,0 +1,23 @@
+// Calculator example in l33tLang
+a = 10
+b = 5
+
+// Addition
+result = a + b
+print result
+
+// Subtraction
+result = a - b
+print result
+
+// Multiplication
+result = a * b
+print result
+
+// Division
+result = a / b
+print result
+
+// Complex expression
+complex_result = (a + b) * 2 - 5
+print complex_result 
