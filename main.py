@@ -1,23 +1,22 @@
 import sys
 
-# Placeholder lexer
+import lexer
+import parser
+
 def tokenize(source_code):
-    print("Lexing...")
-    tokens = source_code.split()  # Dummy lexer splits by spaces
+    tokens = lexer.lexer(source_code)
     return tokens
 
-# Placeholder parser
 def parse(tokens):
-    print("Parsing...")
-    ast = tokens  # Dummy parser just passes tokens as AST
+    print("parsing...")
+    ast = parser.parser(tokens)
+    print(ast)
     return ast
 
-# Placeholder interpreter
 def evaluate(ast):
-    print("Interpreting...")
-    # For now, just print the AST contents
-    return ' '.join(ast)
-    
+    print("interpreting...")
+    return ast
+
 def run_l33tlang(filename):
     # open file and read it
     with open(filename, 'r') as f:
@@ -27,7 +26,7 @@ def run_l33tlang(filename):
         tokens = tokenize(source_code)
         ast = parse(tokens)
         result = evaluate(ast)
-        print(result)
+
     except Exception as e:
         print(f"[error] {e}")
         
