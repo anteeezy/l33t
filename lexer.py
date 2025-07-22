@@ -5,9 +5,13 @@ def lexer(source_code):
     
     token_mapping = [
         ('KEYWORD', r'\bprint\b'),      # print keyword
+        ('LET', r'blet\b'),             # let variable
         ('STRING', r'"[^"\n]*"'),       # quoted string
+        ('IDENTIFIER', r'[A-Za-z_][A-Za-z0-9_]*'),  # identify 
+        ('EQUALS', r'='),
         ('NEWLINE',  r'\n'),            # new line
-        ('SKIP', r'[ \t]+'),            # skip spaces/tabs
+        ('COMMENT', r'//.*'),           # support comments
+        ('SKIP', r'[ \t]+'),            # skipspaces/tabs
         ('MISMATCH', r'.'),             # any other character (error)
     ]
     
@@ -21,8 +25,8 @@ def lexer(source_code):
         value = match.group()           # matched text like 'print' or 'hello
     
         if kind == 'NEWLINE':
-            line_num += 1
-        if kind == 'SKIP':
+            line_num += 1 
+        elif kind == 'SKIP' or kind == 'COMMENT':
             continue
         elif kind == 'STRING':
             if value is not None and len(value) >= 2:
@@ -32,8 +36,6 @@ def lexer(source_code):
             tokens.append((kind, strip))
         elif kind == 'MISMATCH':
             raise SyntaxError(f"Unexpected character {value!r} on line {line_num}")
-        else:
+        else: 
             tokens.append((kind, value))
- 
     return tokens
-        
