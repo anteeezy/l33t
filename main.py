@@ -2,9 +2,11 @@ import sys
 
 import lexer
 import parser
+import interpreter
 
 def tokenize(source_code):
     tokens = lexer.lexer(source_code)
+    print(tokens)
     return tokens
 
 def parse(tokens):
@@ -14,8 +16,7 @@ def parse(tokens):
     return ast
 
 def evaluate(ast):
-    print("interpreting...")
-    return ast
+    interpreter.interpreter(ast)
 
 def run_l33tlang(filename):
     # open file and read it
